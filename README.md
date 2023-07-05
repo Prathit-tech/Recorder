@@ -1,6 +1,6 @@
-# lo
+# Recorder
 
-A new Flutter project.
+Page1.dart allows recording and playing of the audio. Time limitations
 
 ## Getting Started
 
