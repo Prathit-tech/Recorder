@@ -19,9 +19,9 @@ class mainapp extends StatelessWidget {
             backgroundColor: Colors.red,
             bottom: const TabBar(
               tabs: [
-                Tab(icon: Icon(Icons.directions_car)),
-                Tab(icon: Icon(Icons.directions_transit)),
-                Tab(icon: Icon(Icons.directions_bike)),
+                Tab(icon: Icon(Icons.mic)),
+                Tab(icon: Icon(Icons.play_arrow)),
+                Tab(icon: Icon(Icons.settings)),
               ],
             ),
             title: const Text('Recorder'),
@@ -30,31 +30,7 @@ class mainapp extends StatelessWidget {
             children: [
               MyApp(),
               page2(),
-              Center(
-                child: Column(
-                  children: [
-                    Text(
-                      'THe same as site 2, uses Listview instead of Listview builder',style: TextStyle(color: Colors.red),
-                    ),
-                    ListView(
-                      children: [
-                        Container(
-                          child: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  Text('I am true now'),
-                                ]
-                              ),
-
-                            ],
-                          ),
-                        )
-                      ],
-                    )
-                  ],
-                ),
-              ),
+              SimpleRecorder(),
             ],
           ),
         ),

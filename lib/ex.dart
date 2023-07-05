@@ -6,6 +6,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -88,14 +89,11 @@ class _HomeState extends State<Home> {
         child: Column(
           children: [
             const SizedBox(height: 20),
-            Expanded(
-              child:
+
             SafeArea(
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(50,0,0,0),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     AnimatedSwitcher(
                       duration: const Duration(milliseconds: 200),
@@ -120,25 +118,30 @@ class _HomeState extends State<Home> {
                             horizontal: 15),
                       )
                           : Container(
-                              width:
-                              MediaQuery.of(context).size.width / 1.7,
-                              height: 50,
-                              decoration: BoxDecoration(
-                                color: const Color(0xFF1E1B26),
-                                borderRadius: BorderRadius.circular(12.0),
-                              ),
-                              padding: const EdgeInsets.only(left: 18),
-                              margin: const EdgeInsets.symmetric(
-                                  horizontal: 15),
-                          child: TextField(
+                        width:
+                        MediaQuery.of(context).size.width / 1.7,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF1E1B26),
+                          borderRadius: BorderRadius.circular(12.0),
+                        ),
+                        padding: const EdgeInsets.only(left: 18),
+                        margin: const EdgeInsets.symmetric(
+                            horizontal: 15),
+                        child: TextField(
                           readOnly: true,
                           decoration: InputDecoration(
-                            hintText: "",
+                            hintText: "Type Something...",
                             hintStyle: const TextStyle(
                                 color: Colors.white54),
                             contentPadding:
                             const EdgeInsets.only(top: 16),
                             border: InputBorder.none,
+                            suffixIcon: IconButton(
+                              onPressed: _pickFile,
+                              icon: Icon(Icons.adaptive.share),
+                              color: Colors.white54,
+                            ),
                           ),
                         ),
                       ),
@@ -180,7 +183,7 @@ class _HomeState extends State<Home> {
                 ),
               ),
             ),
-            )],
+          ],
         ),
       ),
     );
@@ -220,11 +223,17 @@ class _HomeState extends State<Home> {
       isWaveformRefreshing = true;
     });
 
-    recorderController.refresh();
+    void _refreshWaveform() {
+      setState(() {
+        isWaveformRefreshing = true;
+      });
 
-    setState(() {
-      isWaveformRefreshing = false;
-    });
+      recorderController.refresh();
+
+      setState(() {
+        isWaveformRefreshing = false;
+      });
+    }
+
   }
-
 }

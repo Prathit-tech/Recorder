@@ -190,6 +190,7 @@ class _SimpleRecorderState extends State<SimpleRecorder> {
             alignment: Alignment.center,
 
             child: Column(children: [
+              Text('Since Page  3 doesnt have functionality, this page allows you to record and play audio right here'),
               ElevatedButton(
 
                   onPressed: getRecorderFn(),
